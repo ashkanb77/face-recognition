@@ -33,10 +33,10 @@ writer = SummaryWriter('runs/' + args.experiment)
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 lfw_train = LFW(args.base_dir + 'train', args.image_size, transform=get_transforms())
-train_loader = DataLoader(lfw_train, args.image_size, batch_size=args.batch_size,shuffle=True)
+train_loader = DataLoader(lfw_train, batch_size=args.batch_size, shuffle=True)
 
 lfw_test = LFW(args.base_dir + 'test', transform=None)
-test_loader = DataLoader(lfw_test, args.image_size, batch_size=args.batch_size, shuffle=True)
+test_loader = DataLoader(lfw_test, batch_size=args.batch_size, shuffle=True)
 
 classes = lfw_train.dataset.classes
 N_CLASSES = len(classes)
