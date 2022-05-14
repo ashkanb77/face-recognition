@@ -10,7 +10,7 @@ class DoubleConv(nn.Module):
         self.batch_norm1 = nn.BatchNorm2d(mid_channels)
         self.conv2 = nn.Conv2d(mid_channels, out_channels, kernel_size=kernel2, padding=kernel2 // 2)
         self.batch_norm2 = nn.BatchNorm2d(out_channels)
-        self.pool = nn.MaxPool2d()
+        self.pool = nn.MaxPool2d(2, 2)
         self.residual = residual
 
         if residual:

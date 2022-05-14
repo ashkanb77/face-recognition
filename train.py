@@ -48,7 +48,7 @@ if args.plot_images:
     plot_images(images, labels, classes)
 
 
-model = Model()
+model = Model(args.image_size, N_CLASSES)
 model.to(device)
 
 print(f"number of parameters of model is {count_params(model)}")
@@ -100,7 +100,7 @@ def test(epoch, checkpoint):
   checkpoint.save(accuracy.compute(), 'ckpt', epoch=epoch)
 
 
-checkpoint = Checkpoint()
+checkpoint = Checkpoint('checkpoint', model)
 for epoch in range(args.n_epochs):
   train(epoch)
   test(epoch, checkpoint)
