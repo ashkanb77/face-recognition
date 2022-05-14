@@ -19,8 +19,8 @@ class DoubleConv(nn.Module):
     def forward(self, x):
         
         y = self.conv1(x)
-        y = self.batch_norm1(x)
-        y = self.conv2(x)
+        y = self.batch_norm1(y)
+        y = self.conv2(y)
         if self.residual:
             x = self.res_conv(x)
             y = y + x
