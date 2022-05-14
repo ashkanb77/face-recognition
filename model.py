@@ -1,6 +1,7 @@
 from turtle import forward
 import torch.nn as nn
 from torch.nn.functional import relu
+from torch import flatten
 
 class DoubleConv(nn.Module):
     def __init__(self, in_channels, mid_channels, out_channels, residual=False, kernel1=3, kernel2=3):
@@ -45,7 +46,7 @@ class Model(nn.Module):
     x = self.d_conv1(x)
     x = self.d_conv2(x)
     x = self.d_conv3(x)
-
+    x = flatten(x)
     x = self.fc1(x)
     x = relu(x)
     x = self.fc2(x)
