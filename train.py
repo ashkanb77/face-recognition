@@ -35,7 +35,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 lfw_train = LFW(args.base_dir + 'train', args.image_size, transform=get_transforms())
 train_loader = DataLoader(lfw_train, batch_size=args.batch_size, shuffle=True)
 
-lfw_test = LFW(args.base_dir + 'test', transform=None)
+lfw_test = LFW(args.base_dir + 'test', args.image_size, transform=None)
 test_loader = DataLoader(lfw_test, batch_size=args.batch_size, shuffle=True)
 
 classes = lfw_train.dataset.classes
