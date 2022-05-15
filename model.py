@@ -38,7 +38,7 @@ class Model(nn.Module):
     self.d_conv1 = DoubleConv(3, 32, 64)
     self.d_conv2 = DoubleConv(64, 128, 128, residual=True)
     self.d_conv3 = DoubleConv(128, 256, 256, residual=True)
-    self.fc1 = nn.Linear(image_size // 8 * 256, 128)
+    self.fc1 = nn.Linear((image_size // 8) ** 2 * 256, 128)
 
     self.fc2 = nn.Linear(128, n_classes)
 
